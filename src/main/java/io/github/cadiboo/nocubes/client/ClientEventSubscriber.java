@@ -308,21 +308,21 @@ public final class ClientEventSubscriber {
 
 	@SubscribeEvent
 	public static void onClientConnectedToServerEvent(final ClientConnectedToServerEvent event) {
-		final GameSettings gameSettings = Minecraft.getMinecraft().gameSettings;
-		boolean needsResave = false;
-		if (gameSettings.ambientOcclusion < 1) {
-			NoCubes.NO_CUBES_LOG.info("Smooth lighting was off. EW! Just set it to MINIMAL");
-			gameSettings.ambientOcclusion = 1;
-			needsResave = true;
-		}
-		if (!gameSettings.fancyGraphics) {
-			NoCubes.NO_CUBES_LOG.info("Fancy graphics were off. Ew, who plays with black leaves??? Just turned it on");
-			gameSettings.fancyGraphics = true;
-			needsResave = true;
-		}
-		if (needsResave) {
-			gameSettings.saveOptions();
-		}
+//		final GameSettings gameSettings = Minecraft.getMinecraft().gameSettings;
+//		boolean needsResave = false;
+//		if (gameSettings.ambientOcclusion < 1) {
+//			NoCubes.NO_CUBES_LOG.info("Smooth lighting was off. EW! Just set it to MINIMAL");
+//			gameSettings.ambientOcclusion = 1;
+//			needsResave = true;
+//		}
+//		if (!gameSettings.fancyGraphics) {
+//			NoCubes.NO_CUBES_LOG.info("Fancy graphics were off. Ew, who plays with black leaves??? Just turned it on");
+//			gameSettings.fancyGraphics = true;
+//			needsResave = true;
+//		}
+//		if (needsResave) {
+//			gameSettings.saveOptions();
+//		}
 	}
 
 	@SubscribeEvent

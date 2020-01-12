@@ -98,21 +98,22 @@ public final class ClientUtil {
 	 * @return the color
 	 */
 	public static int getColor(final BakedQuad quad, final IBlockState state, final IBlockAccess cache, final BlockPos pos) {
-		final int red;
-		final int green;
-		final int blue;
-
-		if (quad.hasTintIndex()) {
-			final int colorMultiplier = Minecraft.getMinecraft().getBlockColors().colorMultiplier(state, cache, pos, 0);
-			red = (colorMultiplier >> 16) & 255;
-			green = (colorMultiplier >> 8) & 255;
-			blue = colorMultiplier & 255;
-		} else {
-			red = 0xFF;
-			green = 0xFF;
-			blue = 0xFF;
-		}
-		return color(red, green, blue);
+//		final int red;
+//		final int green;
+//		final int blue;
+//
+//		if (quad.hasTintIndex()) {
+//			final int colorMultiplier = Minecraft.getMinecraft().getBlockColors().colorMultiplier(state, cache, pos, 0);
+//			red = (colorMultiplier >> 16) & 255;
+//			green = (colorMultiplier >> 8) & 255;
+//			blue = colorMultiplier & 255;
+//		} else {
+//			red = 0xFF;
+//			green = 0xFF;
+//			blue = 0xFF;
+//		}
+//		return color(red, green, blue);
+		return 0xFFFFFF;
 	}
 
 	//TODO

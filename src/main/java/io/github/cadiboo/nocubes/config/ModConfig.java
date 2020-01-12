@@ -37,6 +37,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 
 import static io.github.cadiboo.nocubes.util.ModReference.MOD_ID;
@@ -187,8 +188,8 @@ public final class ModConfig {
 		return LEAVES_SMOOTHABLE_BLOCK_STATES_CACHE;
 	}
 
-	private static void setupTerrainSmoothableBlockStates() {
-		final IBlockState[] defaultSmoothableBlockStates = new IBlockState[]{
+	public static void setupTerrainSmoothableBlockStates() {
+		final ArrayList<IBlockState> defaultSmoothableBlockStates = new ArrayList<>(Arrays.asList(
 
 				GRASS.getDefaultState().withProperty(BlockGrass.SNOWY, true),
 				GRASS.getDefaultState().withProperty(BlockGrass.SNOWY, false),
@@ -267,9 +268,17 @@ public final class ModConfig {
 				END_STONE.getDefaultState(),
 
 				MYCELIUM.getDefaultState().withProperty(BlockMycelium.SNOWY, true),
-				MYCELIUM.getDefaultState().withProperty(BlockMycelium.SNOWY, false),
+				MYCELIUM.getDefaultState().withProperty(BlockMycelium.SNOWY, false)
 
-		};
+		));
+		for (final Block block : ForgeRegistries.BLOCKS.getValuesCollection()) {
+			for (final IBlockState state : block.getBlockState().getValidStates()) {
+				if (state.toString().contains("dirt")) {
+					defaultSmoothableBlockStates.add(state);
+				}
+			}
+		}
+
 
 		final ArrayList<String> tempSmoothableBlockStates = new ArrayList<>();
 
@@ -281,7 +290,7 @@ public final class ModConfig {
 		terrainSmoothableBlockStates = tempSmoothableBlockStates.toArray(new String[0]);
 	}
 
-	private static void setupLeavesSmoothableBlockStates() {
+	public static void setupLeavesSmoothableBlockStates() {
 
 		final ArrayList<IBlockState> defaultSmoothableBlockStates = new ArrayList<>();
 

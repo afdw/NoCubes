@@ -134,6 +134,8 @@ public final class NoCubes {
 	@Mod.EventHandler
 	public void onPostInit(final FMLPostInitializationEvent event) {
 		PROXY.replaceFluidRendererCauseImBored();
+		ModConfig.setupTerrainSmoothableBlockStates();
+		ModConfig.setupLeavesSmoothableBlockStates();
 	}
 
 	public void testHooks() {
